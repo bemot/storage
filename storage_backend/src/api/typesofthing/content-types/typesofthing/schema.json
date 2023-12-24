@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "typesofthings",
+  "info": {
+    "singularName": "typesofthing",
+    "pluralName": "typesofthings",
+    "displayName": "typesofthing"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

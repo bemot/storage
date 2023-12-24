@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "category_of_items",
+  "info": {
+    "singularName": "category-of-item",
+    "pluralName": "category-of-items",
+    "displayName": "category of item",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "category": {
+      "type": "string"
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category-of-item.category-of-item"
+    },
+    "item": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::item.item",
+      "inversedBy": "category_of_items"
+    }
+  }
+}

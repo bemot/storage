@@ -1,0 +1,37 @@
+{
+  "name": "nash-sklad",
+  "version": "0.1.0",
+  "private": true,
+  "description": "My storages application",
+  "license": "MIT",
+  "author": {
+    "name": "Sasha Bemotoff"
+  },
+  "scripts": {
+    "build": "strapi build",
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "strapi": "strapi"
+  },
+  "dependencies": {
+    "@strapi/plugin-cloud": "4.15.4",
+    "@strapi/plugin-i18n": "4.15.4",
+    "@strapi/plugin-users-permissions": "4.15.4",
+    "@strapi/strapi": "4.15.4",
+    "better-sqlite3": "8.6.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.6.3",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "5.3.4",
+    "styled-components": "5.3.3"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18.0.0 <=20.x.x",
+    "npm": ">=6.0.0"
+  },
+  "strapi": {
+    "uuid": "15e74b83-7b88-4b6b-9b4d-ebb6a432ddd2"
+  }
+}

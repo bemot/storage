@@ -1,0 +1,263 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/*Global*/
+html,
+body {
+  box-sizing: border-box;
+  height: 100%;
+  background-color: #262626;
+  color: #666699;
+  padding: 0;
+  margin: 0;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    Helvetica Neue,
+    sans-serif;
+}
+
+.content-container {
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.danger {
+  color: #f27405;
+  background-color: #3b3b40;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 2%;
+}
+
+.success {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  padding: 2%;
+  margin: 0;
+  color: #83a637;
+  background-color: #3b3b40;
+}
+
+.shadow {
+  -webkit-box-shadow: -1px 9px 9px -4px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: -1px 9px 9px -4px rgba(0, 0, 0, 0.4);
+  box-shadow: -1px 9px 9px -4px rgba(0, 0, 0, 0.4);
+}
+
+/*Nav*/
+.navigation {
+  font-size: 1.3rem;
+  background-color: #0d0d0d;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  padding: 1%;
+}
+
+.nav-link {
+  color: inherit;
+  padding: 3%;
+  font-weight: bolder;
+}
+
+/*Typography*/
+.heading {
+  margin: 0;
+  color: #8ff7b3;
+  font-size: 1.3rem;
+  background-color: #595959;
+  padding: 1%;
+  display: flex;
+  justify-content: center;
+}
+
+/*Home page - movie content */
+.movies-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1000px;
+  height: 100%;
+  margin: auto;
+}
+
+.movie-container {
+  padding: 1%;
+  margin: 1%;
+  max-width: 215px;
+  background-color: #32403e;
+  border-radius: 10px;
+}
+
+.movie-title {
+  text-align: center;
+  font-size: 1.2rem;
+  overflow-wrap: break-word;
+}
+
+.movie-img {
+  object-fit: contain;
+}
+
+/*Movie details page*/
+
+.movie-details-container {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  background-color: #575259;
+  max-width: 1000px;
+  margin: auto;
+  margin-top: 2%;
+  border-radius: 5px;
+}
+
+.details {
+  display: flex;
+  justify-content: center;
+  padding: 2%;
+  justify-content: space-around;
+}
+
+.summary-title {
+  color: #f26666;
+}
+
+/*Forms*/
+.form {
+  max-width: 400px;
+  background-color: #d0d7d9;
+  padding: 3%;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  margin: 1% auto;
+}
+
+.form-content,
+.form-field {
+  max-width: 450px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form-field {
+  margin-bottom: 3%;
+}
+
+.form-field > span {
+  color: #f27405;
+  font-style: italic;
+}
+
+.form-label {
+  width: 400px;
+  font-weight: bolder;
+}
+
+.form-input {
+  padding: 2%;
+  max-width: 400px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+
+.form-button {
+  font-size: 1.2rem;
+  font-weight: bolder;
+  padding: 3% 0;
+  max-width: 300px;
+  border: none;
+  outline: none;
+  background-color: #111111;
+  border-radius: 5px;
+  margin: 1% auto;
+  width: 250px;
+  min-width: 100px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .details {
+    display: flex;
+    flex-direction: column;
+  }
+  .img-container {
+    margin: auto;
+  }
+  .movie-summary-container {
+    margin: auto;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .form-label,
+  .form-input,
+  .form-button {
+    width: 100%;
+  }
+  .navigation {
+    text-align: center;
+    font-size: 0.8rem;
+    flex-direction: column;
+    padding: 1%;
+  }
+  .genre-container {
+    margin: auto;
+    flex-direction: column;
+  }
+  .movie-genre {
+    margin-top: 5%;
+  }
+}
+
+.Table {
+  display: table;
+}
+.Title {
+  display: table-caption;
+  text-align: center;
+  font-weight: bold;
+  font-size: larger;
+}
+.Heading {
+  display: table-row;
+  font-weight: bold;
+  text-align: center;
+}
+.Row {
+  display: table-row;
+}
+.Cell {
+  display: table-cell;
+  border: solid;
+  border-width: thin;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.pagination {
+  display: flex; /* This will ensure all items are in one line */
+  list-style-type: none;
+}
+
+.page-item {
+  margin-right: 5px; /* Adjust spacing between pagination items */
+}
+
+/* Add any additional styling you need here */

@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "items",
+  "info": {
+    "singularName": "item",
+    "pluralName": "items",
+    "displayName": "item",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name_of_item": {
+      "type": "string"
+    },
+    "shelf": {
+      "type": "string"
+    },
+    "shelf_space": {
+      "type": "string"
+    },
+    "purchase_date": {
+      "type": "date"
+    },
+    "pictures": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "category_of_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category-of-item.category-of-item",
+      "mappedBy": "item"
+    },
+    "storage_place": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::garage.garage"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

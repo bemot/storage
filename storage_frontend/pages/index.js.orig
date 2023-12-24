@@ -1,0 +1,50 @@
+'use server';
+import { signOut, useSession } from 'next-auth/react';
+import Head from 'next/head';
+import Link from 'next/link';
+import { useEffect } from 'react';
+import styles from '../styles/Home.module.css';
+import Heading from '../components/typography/Heading';
+import Layout from '../components/Layout';
+
+export default function Home() {
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    if (session == null) return;
+    //console.log('session.jwt', session.jwt);
+  }, [session]);
+
+  return (
+    <>
+      <Layout>
+        <Heading>
+          <title>Storages</title>
+        </Heading>
+        <h1>{session ? 'Authenticated' : 'Not Authenticated'}</h1>
+        {session && (
+          <div style={{ marginBottom: 10 }}>
+            <div>Email: {session.user.email}</div>
+            <div>Dont warry, be happy!</div>
+          </div>
+        )}
+        {session ? (
+          <button onClick={signOut}>Sign out</button>
+        ) : (
+          <Link href="/auth/sign-in">
+            <button>Sign In</button>
+          </Link>
+        )}
+        <Link href="/protected/">
+          <button
+            style={{
+              marginTop: 10,
+            }}
+          >
+            Go to the Storages!{' '}
+          </button>
+        </Link>
+      </Layout>
+    </>
+  );
+}

@@ -1,0 +1,31 @@
+npm install js-cookie
+# or
+yarn add js-cookie
+Import and use it in your code:
+javascript
+Copy code
+import Cookies from 'js-cookie';
+
+// Set a cookie
+Cookies.set('myCookie', 'cookieValue');
+
+// Get a cookie
+const cookieValue = Cookies.get('myCookie');
+Using the built-in cookies module in Next.js:
+
+In Next.js, you can access cookies from the request object in your API routes or server-side code. Here's an example:
+javascript
+Copy code
+// In your API route (e.g., pages/api/my-api.js)
+import { serialize } from 'cookie';
+
+export default (req, res) => {
+  // Set a cookie
+  res.setHeader('Set-Cookie', serialize('myCookie', 'cookieValue', { path: '/' }));
+
+  // Get a cookie
+  const myCookie = req.cookies.myCookie;
+
+  // Your code logic here
+  res.status(200).json({ message: 'Cookie operations completed.' });
+};

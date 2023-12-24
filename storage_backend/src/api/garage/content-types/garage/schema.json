@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "garages",
+  "info": {
+    "singularName": "garage",
+    "pluralName": "garages",
+    "displayName": "storage_place",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "storage_name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "picture": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
