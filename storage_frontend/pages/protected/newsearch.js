@@ -23,7 +23,7 @@ export default function SearchComponent(props) {
   //pagination
   const allItems = filteredResults || [];
   console.log(allItems);
-  const itemsPerPage = 5;
+  const itemsPerPage = 10;
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -90,7 +90,7 @@ export default function SearchComponent(props) {
             </button>
           </div>
         </form>
-        <div className="grid grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           {currentItems.map((item) => (
             <a href={`item/${item.id}`} key={item.id}>
               <div className="grid grid-rows-1 gap-2">
@@ -210,7 +210,9 @@ export const getServerSideProps = async (context) => {
   }
   try {
     const response = await axios.get(
-      `${STORAGE_API}/items?filters[users_permissions_user.data[0].attributes.email]=${session.email}&populate=*`,
+      `${STORAGE_API}/items?filters[users_permissions_user]=${session.id}&populate=*`,
+
+      //      `${STORAGE_API}/items?filters[users_permissions_user.data[0].attributes.email]=${session.email}&populate=*`,
       {
         headers: { Authorization: `Bearer ${API_TOKEN}` },
       },

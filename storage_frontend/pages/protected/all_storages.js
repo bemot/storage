@@ -12,6 +12,7 @@ import { PICTURES_API } from '../../constants/Api.js';
 export default function All(props) {
   const [currentPage, setCurrentPage] = useState(1);
   const allItems = props.items;
+  console.log('session = ', props.ses.id);
   console.log('allItems=', allItems);
   const itemsPerPage = 10;
 
@@ -27,11 +28,15 @@ export default function All(props) {
 
   const pages = 'Pages: ';
 
+  // let cols = 5;
+  // // const cn = `grid grid-cols-${cols} gap-4`;
+  const cn = `grid grid-cols-2 md:grid-cols-5 gap-4`;
+
   return (
     <Layout>
       <>
         <Heading> Home </Heading>
-        <div className="grid grid-cols-5 gap-4">
+        <div className={`${cn}`}>
           {currentItems.map((item) => (
             <a href={`item/${item.id}`} key={item.id}>
               <div className="grid grid-rows-1 gap-2">
@@ -135,30 +140,9 @@ export default function All(props) {
   );
 }
 
-// export const getServerSideProps = async (context) => {
-//   const session = await getSession(context);
-//
-//   //const session = await setTimeout(() => getSession(context), 1);
-//
-//   //  console.log(session);
-//   // Check if session exists or not, if not, redirect
-//   if (session == null) {
-//     return {
-//       redirect: {
-//         destination: '/auth/not-authenticated',
-//         permanent: true,
-//       },
-//     };
-//   }
-//   return {
-//     props: {},
-//   };
-// };
-//
 export const getServerSideProps = async (context) => {
   let items = [];
   const session = await getSession(context);
-  //const session = await setTimeout(() => getSession(context), 1000);
 
   // If session does not exist, redirect immediately
   if (!session) {
@@ -171,7 +155,7 @@ export const getServerSideProps = async (context) => {
   }
   try {
     const response = await axios.get(
-      `${STORAGE_API}/items?filters[users_permissions_user.data[0].attributes.email]=${session.email}&populate=*`,
+      `${STORAGE_API}/items?filters[users_permissions_user]=${session.id}&populate=*`,
       {
         headers: { Authorization: `Bearer ${API_TOKEN}` },
       },
@@ -185,7 +169,7 @@ export const getServerSideProps = async (context) => {
   // If session exists, return the usual props
   return {
     props: {
-      session,
+      ses: session,
       items: items,
     },
   };

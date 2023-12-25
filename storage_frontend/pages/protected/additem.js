@@ -59,6 +59,7 @@ export default function AddItem(props) {
       notes: '',
       category_of_items: '',
       storage_place: '',
+      users_permissions_user: props.ses.id,
     },
   });
   async function onSubmit(data) {
@@ -74,12 +75,12 @@ export default function AddItem(props) {
       'data',
       JSON.stringify({
         ...data,
-        users_permissions_user: 1, // Assuming this is the correct field name in Strapi
+        users_permissions_user: props.ses.id, // Assuming this is the correct field name in Strapi
       }),
     );
 
     try {
-      const res = await fetch('http://127.0.0.1:1337/api/items?populate=*', {
+      const res = await fetch('http://localhost:1337/api/items?populate=*', {
         method: 'POST',
         body: formData,
         headers: {
@@ -246,6 +247,7 @@ export const getServerSideProps = async (context) => {
     props: {
       categories: categories,
       storages: storages,
+      ses: session,
     },
   };
 };
