@@ -13,7 +13,7 @@ export default function All(props) {
   const [currentPage, setCurrentPage] = useState(1);
   const allItems = props.items;
   console.log('session = ', props.ses.id);
-  console.log('allItems=', allItems);
+  //console.log('allItems=', allItems);
   const itemsPerPage = 10;
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -35,7 +35,7 @@ export default function All(props) {
   return (
     <Layout>
       <>
-        <Heading> Home </Heading>
+        <Heading> Home {props.ses.user.email} </Heading>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           {currentItems.map((item) => (
             <a href={`item/${item.id}`} key={item.id}>

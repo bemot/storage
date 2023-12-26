@@ -30,7 +30,7 @@ const schema = yup.object().shape({
   select: yup.string().required('Please select a option'),
 });
 
-export default function Contact() {
+export default function Contact(props) {
   const [message, setMessage] = useState('');
   const {
     register,
@@ -84,7 +84,7 @@ export default function Contact() {
   return (
     <>
       <Layout />
-      <Heading>Contact</Heading>
+      <Heading>Contact {props.ses.user.email}</Heading>
       <Feedback type="success" content={message} />
 
       <form onSubmit={handleSubmit(onSubmit)} className="form shadow">
@@ -149,6 +149,6 @@ export const getServerSideProps = async (context) => {
     };
   }
   return {
-    props: {},
+    props: { ses: session },
   };
 };

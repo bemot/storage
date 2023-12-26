@@ -102,7 +102,7 @@ export default function AddItem(props) {
   return (
     <>
       <Layout />
-      <Heading>Add Item</Heading>
+      <Heading>Add Item {props.ses.user.email}</Heading>
       <Feedback type="success" content={message} />
 
       <form onSubmit={handleSubmit(onSubmit)} className="form shadow">

@@ -9,10 +9,10 @@ import Image from 'next/image';
 import { useState } from 'react';
 import axios from 'axios';
 
-import { useEffect } from 'react';
+//import { useEffect } from 'react';
 
 export default function SearchComponent(props) {
-  console.log('session=', props.email);
+  //console.log('session=', props.email);
   //const items = props.items;
   const [currentPage, setCurrentPage] = useState(1);
   const [filteredResults, setFilteredResults] = useState([]);
@@ -22,7 +22,7 @@ export default function SearchComponent(props) {
 
   //pagination
   const allItems = filteredResults || [];
-  console.log(allItems);
+  //console.log(allItems);
   const itemsPerPage = 10;
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -42,25 +42,8 @@ export default function SearchComponent(props) {
     return new RegExp(pattern).test(str);
   };
 
-  // const handleSearch = async () => {
-  //   console.log(props.items);
-  //   // Set the search results state
-  //   setSearchResults(props.items);
-  //
-  //   // Apply fuzzy match filter on the response data directly
-  //   const matchedResults = props.items.filter((item) =>
-  //     fuzzyMatch(
-  //       item.attributes.name_of_item.toLowerCase(),
-  //       searchQuery.toLowerCase(),
-  //     ),
-  //   );
-  //
-  //   // Set the filtered results state
-  //   setFilteredResults(matchedResults);
-  //   console.log(matchedResults);
-  // };
   const handleSearch = async () => {
-    console.log(props.items);
+    //console.log(props.items);
     setSearchResults(props.items);
 
     const matchedResults = props.items.filter(
@@ -95,7 +78,7 @@ export default function SearchComponent(props) {
   const pages = 'Pages: ';
   return (
     <Layout>
-      <Heading>Search</Heading>
+      <Heading>Search {props.ses.user.email}</Heading>
       <div>
         <form onSubmit={onFormSubmit} style={{ width: 'auto' }}>
           <div
@@ -254,7 +237,7 @@ export const getServerSideProps = async (context) => {
   // If session exists, return the usual props
   return {
     props: {
-      session,
+      ses: session,
       items: items,
     },
   };
