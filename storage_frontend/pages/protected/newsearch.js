@@ -42,20 +42,48 @@ export default function SearchComponent(props) {
     return new RegExp(pattern).test(str);
   };
 
+  // const handleSearch = async () => {
+  //   console.log(props.items);
+  //   // Set the search results state
+  //   setSearchResults(props.items);
+  //
+  //   // Apply fuzzy match filter on the response data directly
+  //   const matchedResults = props.items.filter((item) =>
+  //     fuzzyMatch(
+  //       item.attributes.name_of_item.toLowerCase(),
+  //       searchQuery.toLowerCase(),
+  //     ),
+  //   );
+  //
+  //   // Set the filtered results state
+  //   setFilteredResults(matchedResults);
+  //   console.log(matchedResults);
+  // };
   const handleSearch = async () => {
     console.log(props.items);
-    // Set the search results state
     setSearchResults(props.items);
 
-    // Apply fuzzy match filter on the response data directly
-    const matchedResults = props.items.filter((item) =>
-      fuzzyMatch(
-        item.attributes.name_of_item.toLowerCase(),
-        searchQuery.toLowerCase(),
-      ),
+    const matchedResults = props.items.filter(
+      (item) =>
+        fuzzyMatch(
+          item.attributes.shelf.toLowerCase(),
+          searchQuery.toLowerCase(),
+        ) ||
+        fuzzyMatch(
+          item.attributes.shelf_space.toLowerCase(),
+          searchQuery.toLowerCase(),
+        ) ||
+        fuzzyMatch(
+          item.attributes.name_of_item.toLowerCase(),
+          searchQuery.toLowerCase(),
+        ) ||
+        (item.attributes.notes &&
+          fuzzyMatch(
+            item.attributes.notes.toLowerCase(),
+            searchQuery.toLowerCase(),
+          )),
     );
 
-    // Set the filtered results state
     setFilteredResults(matchedResults);
     console.log(matchedResults);
   };

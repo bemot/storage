@@ -36,7 +36,7 @@ export default function All(props) {
     <Layout>
       <>
         <Heading> Home </Heading>
-        <div className={`${cn}`}>
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
           {currentItems.map((item) => (
             <a href={`item/${item.id}`} key={item.id}>
               <div className="grid grid-rows-1 gap-2">
