@@ -31,7 +31,7 @@ const schema = yup.object().shape({
     .min(10, 'Must be at least 10 characters'),
 
   storage_place: yup.string().required('Please choose storage place'),
-  category_of_items: yup.string().required('Please choose category of item'),
+  category: yup.string().required('Please choose category of item'),
 });
 
 export default function AddItem(props) {
@@ -57,7 +57,7 @@ export default function AddItem(props) {
       shelf: '',
       shelf_space: '',
       notes: '',
-      category_of_items: '',
+      category: '',
       storage_place: '',
       users_permissions_user: props.ses.id,
     },
@@ -102,7 +102,7 @@ export default function AddItem(props) {
   return (
     <>
       <Layout />
-      <Heading>Add Item {props.ses.user.email}</Heading>
+      <Heading>Add Item {}</Heading>
       <Feedback type="success" content={message} />
 
       <form onSubmit={handleSubmit(onSubmit)} className="form shadow">
@@ -158,7 +158,7 @@ export default function AddItem(props) {
           <div className="form-field">
             <label className="form-label">Category of item</label>
             <Controller
-              name="category_of_items"
+              name="category"
               control={control}
               render={({ field }) => (
                 <select {...field} className="form-input">
@@ -171,9 +171,7 @@ export default function AddItem(props) {
                 </select>
               )}
             />
-            {errors.category_of_items && (
-              <span>{errors.category_of_items.message}</span>
-            )}
+            {errors.category && <span>{errors.category.message}</span>}
           </div>
 
           <div className="form-field">

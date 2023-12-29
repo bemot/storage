@@ -682,7 +682,7 @@ export interface ApiCategoryOfItemCategoryOfItem extends Schema.CollectionType {
   info: {
     singularName: 'category-of-item';
     pluralName: 'category-of-items';
-    displayName: 'category of item';
+    displayName: 'Category';
     description: '';
   };
   options: {
@@ -690,16 +690,6 @@ export interface ApiCategoryOfItemCategoryOfItem extends Schema.CollectionType {
   };
   attributes: {
     category: Attribute.String;
-    parent: Attribute.Relation<
-      'api::category-of-item.category-of-item',
-      'oneToMany',
-      'api::category-of-item.category-of-item'
-    >;
-    item: Attribute.Relation<
-      'api::category-of-item.category-of-item',
-      'manyToOne',
-      'api::item.item'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -768,11 +758,6 @@ export interface ApiItemItem extends Schema.CollectionType {
     shelf_space: Attribute.String;
     purchase_date: Attribute.Date;
     pictures: Attribute.Media;
-    category_of_items: Attribute.Relation<
-      'api::item.item',
-      'oneToMany',
-      'api::category-of-item.category-of-item'
-    >;
     storage_place: Attribute.Relation<
       'api::item.item',
       'oneToOne',
@@ -784,6 +769,11 @@ export interface ApiItemItem extends Schema.CollectionType {
       'plugin::users-permissions.user'
     >;
     notes: Attribute.String;
+    category: Attribute.Relation<
+      'api::item.item',
+      'oneToOne',
+      'api::category-of-item.category-of-item'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

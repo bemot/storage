@@ -4,7 +4,7 @@
   "info": {
     "singularName": "category-of-item",
     "pluralName": "category-of-items",
-    "displayName": "category of item",
+    "displayName": "Category",
     "description": ""
   },
   "options": {
@@ -14,17 +14,6 @@
   "attributes": {
     "category": {
       "type": "string"
-    },
-    "parent": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::category-of-item.category-of-item"
-    },
-    "item": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::item.item",
-      "inversedBy": "category_of_items"
     }
   }
 }
