@@ -13,7 +13,7 @@ export default function All(props) {
   const [currentPage, setCurrentPage] = useState(1);
   const allItems = props.items;
   console.log('session = ', props.ses.id);
-  //console.log('allItems=', allItems);
+  console.log('allItems=', allItems);
   const itemsPerPage = 10;
 
   const indexOfLastItem = currentPage * itemsPerPage;

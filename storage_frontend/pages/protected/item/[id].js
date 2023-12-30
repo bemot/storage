@@ -27,11 +27,11 @@ export default function Item({ item }) {
               <div key={picture.id}>
                 <div className="img-container">
                   <Image
-                    src={PICTURES_API + picture.attributes.url}
-                    width={picture.attributes.width}
-                    height={picture.attributes.height}
+                    src={PICTURES_API + picture.attributes.formats.small.url}
+                    width={picture.attributes.formats.small.width}
+                    height={picture.attributes.formats.small.height}
                     priority
-                    alt="My Image"
+                    alt="picture is too big"
                   ></Image>
                 </div>
               </div>

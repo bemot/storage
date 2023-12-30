@@ -37,8 +37,8 @@ const schema = yup.object().shape({
 export default function AddItem(props) {
   const [message, setMessage] = useState('');
 
-  // console.log("here1", props.storages);
-  // console.log("here2", props.categories);
+  //console.log('here1', props.storages);
+  //console.log('here2', props.categories);
 
   const [file, setFile] = useState(null);
 
@@ -63,6 +63,7 @@ export default function AddItem(props) {
     },
   });
   async function onSubmit(data) {
+    console.log('data = ', data);
     const formData = new FormData();
 
     // Append the file
